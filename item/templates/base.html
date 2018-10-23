@@ -1,0 +1,31 @@
+<!DOCTYPE html><html lang="ja">
+<head></head>
+<body>
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="">Brickset管理</a>
+      </div>
+      {% if user.is_authenticated %}
+        <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="{% url 'logout' %}">ログアウト</a></li>
+        </ul>
+      </div>
+  </nav>
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-3 col-md-2 sidebar">
+        {% if user.is_authenticated %}
+        <ul class="nav nav-sidebar">
+        <li><a href="{% url 'item_index' %}">アイテム一覧</a></li>
+        <li><a href="{% url 'wish_list_index' %}">ほしい物リスト</a></li>
+      </ul>
+      {% endif %}
+    </div>
+
+    {% block contents %}{% endblock %}
+  </div></div>
+</body>
+</html>
